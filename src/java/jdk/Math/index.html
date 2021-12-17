@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="本文记述 java.lang.Math 的一些常用方法。
+除自己内部实现的代码外，好多方法都代理给 java.lang.StrictMath 。
+ #floor 与 ceil   这是一对相反的操作，即 assert Math.ceil(a) 与 -Math.ceil(-a) 是等同的。 这两个方法都是先计算数学整数值，再转成 double 类型值  #double ceil(double a) public static double ceil(double a) { return StrictMath.ceil(a); }	返回最小的 double 类型值（向负无穷方向取值），此值需满足两个条件：
+ 大于或等于参数值 等于数学整数值  特殊情形：
+ 若参数值等于数学整数值，则返回参数值 若参数为 NaN、无穷值、&#43;0、-0时，则返回参数值 若参数值在区间(-1.0,0)，则返回-0  #double floor(double a) public static double floor(double a) { return StrictMath.floor(a); } 返回最大的 double 类型值（向正无穷方向取值），此值需满足两个条件：
+ 小于或等于参数值 等于数学整数值  特殊情形：
+ 若参数值等于数学整数值，则返回参数值 若参数为 NaN、无穷值、&#43;0、-0时，则返回参数值  #示例 public static void main(String[] args) { double a = 123.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="java.lang.Math" />
+<meta property="og:description" content="本文记述 java.lang.Math 的一些常用方法。
+除自己内部实现的代码外，好多方法都代理给 java.lang.StrictMath 。
+ #floor 与 ceil   这是一对相反的操作，即 assert Math.ceil(a) 与 -Math.ceil(-a) 是等同的。 这两个方法都是先计算数学整数值，再转成 double 类型值  #double ceil(double a) public static double ceil(double a) { return StrictMath.ceil(a); }	返回最小的 double 类型值（向负无穷方向取值），此值需满足两个条件：
+ 大于或等于参数值 等于数学整数值  特殊情形：
+ 若参数值等于数学整数值，则返回参数值 若参数为 NaN、无穷值、&#43;0、-0时，则返回参数值 若参数值在区间(-1.0,0)，则返回-0  #double floor(double a) public static double floor(double a) { return StrictMath.floor(a); } 返回最大的 double 类型值（向正无穷方向取值），此值需满足两个条件：
+ 小于或等于参数值 等于数学整数值  特殊情形：
+ 若参数值等于数学整数值，则返回参数值 若参数为 NaN、无穷值、&#43;0、-0时，则返回参数值  #示例 public static void main(String[] args) { double a = 123." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://broadenj.github.io/src/java/jdk/Math/" /><meta property="article:section" content="src" />
+<meta property="article:published_time" content="2021-12-17T11:28:16+08:00" />
+<meta property="article:modified_time" content="2021-12-17T16:57:50+08:00" />
+
+<title>java.lang.Math | Broadenj&#39;s Blog.</title>
+<link rel="manifest" href="../../../../manifest.json">
+<link rel="icon" href="../../../../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="../../../../book.min.02a000336e14669e9bd560b6c71119d0879f998fb6299820d4f9c93bbc46b116.css" integrity="sha256-AqAAM24UZp6b1WC2xxEZ0IefmY&#43;2KZgg1PnJO7xGsRY=" crossorigin="anonymous">
+  <script defer src="../../../../flexsearch.min.js"></script>
+  <script defer src="../../../../cn.search.min.11ac73bfee61e776568fea0f0f67861167bb16ba1603fa6e4a3cca381dc98852.js" integrity="sha256-Eaxzv&#43;5h53ZWj&#43;oPD2eGEWe7FroWA/puSjzKOB3JiFI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+
+
+<link href='//cdn.bootcss.com/highlight.js/11.1.0/styles/github.min.css'
+  rel='stylesheet' type='text/css' />
+
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="../../../../"><span>Broadenj&#39;s Blog.</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>源码</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Java</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Jdk</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../../../src/java/jdk/Math/" class=" active">java.lang.Math</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>关于</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../../../about/introduction/" class="">简介</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="../../../../svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>java.lang.Math</strong>
+
+  <label for="toc-control">
+    
+    <img src="../../../../svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#floor-与-ceil">floor 与 ceil</a>
+      <ul>
+        <li><a href="#double-ceildouble-a">double ceil(double a)</a></li>
+        <li><a href="#double-floordouble-a">double floor(double a)</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#小结">小结</a></li>
+        <li><a href="#记忆方法">记忆方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#释义">释义</a>
+      <ul>
+        <li><a href="#mathematical-integer">mathematical integer</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><p>本文记述 <code>java.lang.Math</code> 的一些常用方法。</p>
+<p>除自己内部实现的代码外，好多方法都代理给 <code>java.lang.StrictMath</code> 。</p>
+<hr>
+<h1 id="floor-与-ceil"><a class="anchor" href="#floor-%e4%b8%8e-ceil">#</a>floor 与 ceil</h1>
+<hr>
+<ol>
+<li>这是一对相反的操作，即 <code>assert Math.ceil(a)</code> 与 <code>-Math.ceil(-a)</code> 是等同的。</li>
+<li>这两个方法都是先计算<a href="./#mathematical-integer">数学整数值</a>，再转成 double 类型值</li>
+</ol>
+<h2 id="double-ceildouble-a"><a class="anchor" href="#double-ceildouble-a">#</a>double ceil(double a)</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">double</span> <span style="color:#900;font-weight:bold">ceil</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">double</span> a<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#000;font-weight:bold">return</span> StrictMath<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>a<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>	
+</code></pre></div><p>返回最小的 double 类型值（向负无穷方向取值），此值需满足两个条件：</p>
+<ol>
+<li>大于或等于参数值</li>
+<li>等于<a href="./#mathematical-integer">数学整数值</a></li>
+</ol>
+<p>特殊情形：</p>
+<ul>
+<li>若参数值等于数学整数值，则返回参数值</li>
+<li>若参数为 <code>NaN</code>、无穷值、<code>+0</code>、<code>-0</code>时，则返回参数值</li>
+<li>若参数值在区间<code>(-1.0,0)</code>，则返回<code>-0</code></li>
+</ul>
+<h2 id="double-floordouble-a"><a class="anchor" href="#double-floordouble-a">#</a>double floor(double a)</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">double</span> <span style="color:#900;font-weight:bold">floor</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">double</span> a<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#000;font-weight:bold">return</span> StrictMath<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>a<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>返回最大的 double 类型值（向正无穷方向取值），此值需满足两个条件：</p>
+<ol>
+<li>小于或等于参数值</li>
+<li>等于<a href="./#mathematical-integer">数学整数值</a></li>
+</ol>
+<p>特殊情形：</p>
+<ul>
+<li>若参数值等于数学整数值，则返回参数值</li>
+<li>若参数为 <code>NaN</code>、无穷值、<code>+0</code>、<code>-0</code>时，则返回参数值</li>
+</ul>
+<h2 id="示例"><a class="anchor" href="#%e7%a4%ba%e4%be%8b">#</a>示例</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">main</span><span style="color:#000;font-weight:bold">(</span>String<span style="color:#000;font-weight:bold">[]</span> args<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#458;font-weight:bold">double</span> a <span style="color:#000;font-weight:bold">=</span> 123<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">45</span><span style="color:#000;font-weight:bold">;</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;double a: &#34;</span> <span style="color:#000;font-weight:bold">+</span> a<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of &#34;</span> <span style="color:#000;font-weight:bold">+</span> a <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>a<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// 124.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of &#34;</span> <span style="color:#000;font-weight:bold">+</span> a <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>a<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// 123.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;------------------------------&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+    <span style="color:#458;font-weight:bold">double</span> b <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">-</span>678<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">90</span><span style="color:#000;font-weight:bold">;</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;double b: &#34;</span> <span style="color:#000;font-weight:bold">+</span> b<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of &#34;</span> <span style="color:#000;font-weight:bold">+</span> b <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>b<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// -678.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of &#34;</span> <span style="color:#000;font-weight:bold">+</span> b <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>b<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// -679.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;------------------------------&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+    <span style="color:#458;font-weight:bold">double</span> positiveZero <span style="color:#000;font-weight:bold">=</span> Double<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">parseDouble</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;+0.0&#34;</span><span style="color:#000;font-weight:bold">);;</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;+0: &#34;</span> <span style="color:#000;font-weight:bold">+</span> positiveZero<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of &#34;</span> <span style="color:#000;font-weight:bold">+</span> positiveZero <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>positiveZero<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// 0.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of &#34;</span> <span style="color:#000;font-weight:bold">+</span> positiveZero <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>positiveZero<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// 0.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;------------------------------&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+    <span style="color:#458;font-weight:bold">double</span> negativeZero <span style="color:#000;font-weight:bold">=</span> Double<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">parseDouble</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;-0.0&#34;</span><span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34; -0: &#34;</span> <span style="color:#000;font-weight:bold">+</span> negativeZero<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of &#34;</span> <span style="color:#000;font-weight:bold">+</span> negativeZero <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>negativeZero<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// -0.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of &#34;</span> <span style="color:#000;font-weight:bold">+</span> negativeZero <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>negativeZero<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// -0.0
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;------------------------------&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+    <span style="color:#458;font-weight:bold">double</span> nan <span style="color:#000;font-weight:bold">=</span> Double<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">NaN</span><span style="color:#000;font-weight:bold">;</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;NaN: &#34;</span> <span style="color:#000;font-weight:bold">+</span> nan<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of NaN: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>nan<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// NaN
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of Nan: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>nan<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// NaN
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;------------------------------&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+    <span style="color:#458;font-weight:bold">double</span> positiveInfinity <span style="color:#000;font-weight:bold">=</span> Double<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">POSITIVE_INFINITY</span><span style="color:#000;font-weight:bold">;</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;正无穷: &#34;</span> <span style="color:#000;font-weight:bold">+</span> positiveInfinity<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of 正无穷: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>positiveInfinity<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// Infinity
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of 正无穷: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>positiveInfinity<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// Infinity
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;------------------------------&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+    <span style="color:#458;font-weight:bold">double</span> negativeInfinity <span style="color:#000;font-weight:bold">=</span> Double<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">NEGATIVE_INFINITY</span><span style="color:#000;font-weight:bold">;</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;负无穷: &#34;</span> <span style="color:#000;font-weight:bold">+</span> negativeInfinity<span style="color:#000;font-weight:bold">);</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;ceil of 负无穷:&#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ceil</span><span style="color:#000;font-weight:bold">(</span>negativeInfinity<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// -Infinity
+</span><span style="color:#998;font-style:italic"></span>    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;floor of 负无穷: &#34;</span> <span style="color:#000;font-weight:bold">+</span> Math<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">floor</span><span style="color:#000;font-weight:bold">(</span>negativeInfinity<span style="color:#000;font-weight:bold">));</span> <span style="color:#998;font-style:italic">// -Infinity
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>运行结果如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+double a: 123.45
+ceil of 123.45: 124.0
+floor of 123.45: 123.0
+------------------------------
+double b: -678.9
+ceil of -678.9: -678.0
+floor of -678.9: -679.0
+------------------------------
++0: 0.0
+ceil of 0.0: 0.0
+floor of 0.0: 0.0
+------------------------------
+ -0: -0.0
+ceil of -0.0: -0.0
+floor of -0.0: -0.0
+------------------------------
+NaN: NaN
+ceil of NaN: NaN
+floor of Nan: NaN
+------------------------------
+正无穷: Infinity
+ceil of 正无穷: Infinity
+floor of 正无穷: Infinity
+------------------------------
+负无穷: -Infinity
+ceil of 负无穷:-Infinity
+floor of 负无穷: -Infinity
+</code></pre></div><h2 id="小结"><a class="anchor" href="#%e5%b0%8f%e7%bb%93">#</a>小结</h2>
+<p>ceil 是在参数的右侧取最小值（参数右侧即大于或等于参数值、最小值即向左边负无穷方向取）；</p>
+<p>floor 是在参数的左侧取最大值（参数左侧即小于或等于参数值、最大值即向右边正无穷方向取）。</p>
+<h2 id="记忆方法"><a class="anchor" href="#%e8%ae%b0%e5%bf%86%e6%96%b9%e6%b3%95">#</a>记忆方法</h2>
+<p>画一数轴，从左到右标上两点 f(loor)、c(eil)，标记出两个区间：</p>
+<ul>
+<li>(-∞, f]</li>
+</ul>
+<p>floor 相当于从参数 f 的左侧区间中拿出最大的整数值</p>
+<ul>
+<li>[c, +∞)</li>
+</ul>
+<p>ceil 相当于从参数 c 的右侧区间中拿出最小的整数值</p>
+<h1 id="释义"><a class="anchor" href="#%e9%87%8a%e4%b9%89">#</a>释义</h1>
+<hr>
+<h2 id="mathematical-integer"><a class="anchor" href="#mathematical-integer">#</a>mathematical integer</h2>
+<p>mathematical integer，在这里翻译成“数学整数值”。</p>
+<p>API 中在 <code>double IEEEremainder(double f1, double f2)</code> 有一部分解释：</p>
+<p>求余计算，参数遵循 <strong>IEEE 754</strong> 标准。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">double</span> remainder <span style="color:#000;font-weight:bold">=</span> f1 <span style="color:#000;font-weight:bold">-</span> f2 <span style="color:#a61717;background-color:#e3d2d2">×</span> n<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#458;font-weight:bold">double</span> quotient <span style="color:#000;font-weight:bold">=</span> f1 <span style="color:#000;font-weight:bold">/</span> f2<span style="color:#000;font-weight:bold">;</span>
+</code></pre></div><p>quotient 在数学意义上是个精确值，但在编程中，n 称为“数学整数值”，是最接近 quotient 的整数值。</p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+
+
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/languages/cpp.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/languages/bash.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/languages/lua.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/languages/java.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/11.1.0/languages/sql.min.js"></script>
+<script>hljs.configure({ languages: [] }); hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#floor-与-ceil">floor 与 ceil</a>
+      <ul>
+        <li><a href="#double-ceildouble-a">double ceil(double a)</a></li>
+        <li><a href="#double-floordouble-a">double floor(double a)</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#小结">小结</a></li>
+        <li><a href="#记忆方法">记忆方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#释义">释义</a>
+      <ul>
+        <li><a href="#mathematical-integer">mathematical integer</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
